@@ -13,11 +13,10 @@ try {
 
 
 let messageHandler = function(message, sender, sendResponse) {
-    console.log('content_script messageHandler()', arguments);
-
     // Messages that only the top page should handle (not iframes).
     if (isTopPage) {
-
+        console.log('content_script messageHandler()', arguments);
+        sendResponse();
     }
 };
 
@@ -31,3 +30,11 @@ messenger.initConnection('content_script', 'main', messageHandler);
 
 // ----------------------
 window.csM = messenger;
+
+window.csM.sendMessage('devtool', 'main', 'sent from content_script-main to devtool-main', function() {
+    console.log('i am callback - content_script-main to devtool-main');
+});
+
+window.csM.sendMessageToHub('sent from content_script-main to hub', function() {
+    console.log('i am callback - content_script-main to hub');
+});
