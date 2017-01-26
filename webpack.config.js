@@ -11,8 +11,8 @@ var config = {
     entry: {
         'js/background/background.min.js': './src/js/background/background.js',
         'js/content_scripts/content_script.min.js': './src/js/content_scripts/content_script.js',
+        'js/popup/popup.min.js': './src/js/popup/popup.js',
         'js/devtool/devtool.min.js': './src/js/devtool/devtool.js'
-        // popup
     },
 
     output: {

@@ -1,9 +1,9 @@
 console.log('CONTENT_SCRIPT');
 
 import Messenger from 'chrome-ext-messenger';
-
 let messenger = new Messenger();
-
+window.m = messenger;
+/*
 let isTopPage;
 try {
     isTopPage = window.self === window.top;
@@ -20,7 +20,7 @@ let messageHandler = function(message, sender, sendResponse) {
     }
 };
 
-messenger.initConnection('content_script', 'main', messageHandler);
+//messenger.initConnection('content_script', 'main', messageHandler);
 
 // Passing through the background page because devtool window might be closed
 // and we won't know because no response will be sent.
@@ -29,12 +29,12 @@ messenger.initConnection('content_script', 'main', messageHandler);
 });*/
 
 // ----------------------
-window.csM = messenger;
+// window.csM = messenger;
 
-window.csM.sendMessage('devtool', 'main', 'sent from content_script-main to devtool-main', function() {
-    console.log('i am callback - content_script-main to devtool-main');
-});
+// window.csM.sendMessage('devtool', 'sent from content_script-main to devtool-main', function() {
+//     console.log('i am callback - content_script-main to devtool-main');
+// });
 
-window.csM.sendMessageToHub('sent from content_script-main to hub', function() {
-    console.log('i am callback - content_script-main to hub');
-});
+// window.csM.sendMessageToHub('sent from content_script-main to hub', function() {
+//     console.log('i am callback - content_script-main to hub');
+// });*/*/

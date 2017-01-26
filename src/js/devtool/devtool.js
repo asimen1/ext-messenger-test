@@ -1,10 +1,10 @@
 console.log('DEVTOOL');
 
 import Messenger from 'chrome-ext-messenger';
-
 let messenger = new Messenger();
+window.m = messenger;
 
-let messageHandler = function(message, sender, sendResponse) {
+/*let messageHandler = function(message, sender, sendResponse) {
     console.log('devtools got message', arguments);
 
     sendResponse();
@@ -21,4 +21,4 @@ window.dtM.sendMessage('content_script', 'main', 'sent from devtool-main to cont
 
 window.dtM.sendMessageToHub('sent from devtool-main to hub', function() {
     console.log('i am callback - devtool-main to hub');
-});
+});*/

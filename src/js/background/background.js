@@ -1,10 +1,12 @@
 console.log('BACKGROUND');
 
 import Messenger from 'chrome-ext-messenger';
-
 let messenger = new Messenger();
+window.m = messenger;
 
-function messageHandler(message, sender, sendResponse) {
+window.m.initBackgroundHub();
+
+/*function messageHandler(message, sender, sendResponse) {
     console.log('background - messageHandler()', arguments);
 
     sendResponse();
@@ -41,4 +43,4 @@ window.bgM.sendHubMessage('content_script', 'main', dtTabIds[0], 'sent from hub 
 
 window.bgM.sendHubMessage('devtool', 'main', csTabIds[0], 'sent from hub to devtool-main', function() {
     console.log('i am callback - hub to devtool-main');
-});
+});*/
