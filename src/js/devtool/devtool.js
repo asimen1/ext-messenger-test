@@ -35,7 +35,7 @@ window.runTests = function() {
     console.log('--- main to * --- ');
     window.c.sendMessage('content_script:*', 'some message', function(res) { console.log('got response:', res); });
 
-    console.log('DEVTOOL TO POPUP:')
+    console.log('DEVTOOL TO POPUP:');
     console.log('--- main to main --- ');
     window.c.sendMessage('popup:main', 'some message', function(res) { console.log('got response:', res); });
 
@@ -51,7 +51,7 @@ window.runTests = function() {
     console.log('--- main to * --- ');
     window.c.sendMessage('popup:*', 'some message', function(res) { console.log('got response:', res); });
 
-    console.log('DEVTOOL TO DEVTOOL:')
+    console.log('DEVTOOL TO DEVTOOL:');
     console.log('--- main to main --- ');
     window.c.sendMessage('devtool:main', 'some message', function(res) { console.log('got response:', res); });
 
