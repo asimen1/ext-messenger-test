@@ -25,6 +25,22 @@ let messageHandler2 = function(message, sender, sendResponse) {
 window.c2 = messenger.initConnection('main2', messageHandler2);
 
 window.runTests = function(tabId) {
+    console.log('BACKGROUND TO BACKGROUND:');
+    console.log('--- main to main2 --- ');
+    window.c.sendMessage('background:main2', 'some message', function(res) { console.log('got response:', res); });
+
+    console.log('--- main to main --- ');
+    window.c.sendMessage('background:main', 'some message', function(res) { console.log('got response:', res); });
+
+    console.log('--- main2 to main --- ');
+    window.c2.sendMessage('background:main2', 'some message', function(res) { console.log('got response:', res); });
+
+    console.log('--- main to main,main2 --- ');
+    window.c.sendMessage('background:main,main2', 'some message', function(res) { console.log('got response:', res); });
+
+    console.log('--- main to * --- ');
+    window.c.sendMessage('background:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+
     console.log('BACKGROUND TO CONTENT SCRIPT:');
     console.log('--- main to main2 --- ');
     window.c.sendMessage('content_script:main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
