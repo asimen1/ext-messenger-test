@@ -8,6 +8,7 @@ chrome.tabs.onCreated.addListener(function(tab) {
 	console.log('tab created:', tab, tab.id);
 });
 
+//window.setTimeout(messenger.initBackgroundHub, 10000);
 messenger.initBackgroundHub();
 
 let messageHandler = function(message, sender, sendResponse) {
