@@ -5,11 +5,19 @@ let messenger = new Messenger();
 window.m = messenger;
 
 chrome.tabs.onCreated.addListener(function(tab) {
-	console.log('tab created:', tab, tab.id);
+	console.log('-- TAB CREATED: ---', tab, tab.id);
 });
 
+let connectedHandler  = function(extensionPart, port, tabId) {
+	console.log('--- CONNECTED PORT: ---', arguments);
+};
+
+let disconnectedHandler  = function(extensionPart, port, tabId) {
+	console.log('--- DISCONNECTED PORT: ---', arguments);
+};
+
 //window.setTimeout(messenger.initBackgroundHub, 10000);
-messenger.initBackgroundHub();
+messenger.initBackgroundHub({ connectedHandler: connectedHandler, disconnectedHandler: disconnectedHandler });
 
 let messageHandler = function(message, sender, sendResponse) {
     console.log('background got message:', arguments);
@@ -89,4 +97,7 @@ window.runTests = function(tabId) {
 
     console.log('--- main to * --- ');
     window.c.sendMessage('devtool:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+
+    console.log('DISCONNECTING main2:');
+    window.c2.disconnect();
 };
