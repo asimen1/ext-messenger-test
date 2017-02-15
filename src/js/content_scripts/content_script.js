@@ -98,6 +98,8 @@ window.runTests = function() {
     console.log('--- main to * --- ');
     window.c.sendMessage('devtool:*', 'some message', function(res) { console.log('got response:', res); });
 
-    console.log('DISCONNECTING main2:');
-    window.c2.disconnect();
+    console.log('DISCONNECTING main2 (after 1000ms timeout):');
+    window.setTimeout(function() {
+        window.c2.disconnect();
+    }, 1000);
 };
