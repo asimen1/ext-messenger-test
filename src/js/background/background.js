@@ -4,8 +4,10 @@ import Messenger from 'chrome-ext-messenger';
 let messenger = new Messenger();
 window.m = messenger;
 
+var latestTabId;
 chrome.tabs.onCreated.addListener(function(tab) {
 	console.log('-- TAB CREATED: ---', tab, tab.id);
+    latestTabId = tab.id;
 });
 
 let connectedHandler  = function(extensionPart, port, tabId) {
@@ -16,8 +18,12 @@ let disconnectedHandler  = function(extensionPart, port, tabId) {
 	console.log('--- DISCONNECTED PORT: ---', arguments);
 };
 
-//window.setTimeout(messenger.initBackgroundHub, 10000);
-messenger.initBackgroundHub({ connectedHandler: connectedHandler, disconnectedHandler: disconnectedHandler });
+let initBackgroundHub = function() {
+    messenger.initBackgroundHub({ connectedHandler: connectedHandler, disconnectedHandler: disconnectedHandler });
+};
+
+//window.setTimeout(initBackgroundHub, 10000);
+initBackgroundHub();
 
 let messageHandler = function(message, sender, sendResponse) {
     console.log('background got message:', arguments);
@@ -34,6 +40,8 @@ let messageHandler2 = function(message, sender, sendResponse) {
 window.c2 = messenger.initConnection('main2', messageHandler2);
 
 window.runTests = function(tabId) {
+    tabId = tabId || latestTabId;
+
     console.log('BACKGROUND TO BACKGROUND:');
     console.log('--- main to main2 --- ');
     window.c.sendMessage('background:main2', 'some message', function(res) { console.log('got response:', res); });
@@ -98,8 +106,6 @@ window.runTests = function(tabId) {
     console.log('--- main to * --- ');
     window.c.sendMessage('devtool:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
 
-    console.log('DISCONNECTING main2 (after 1000ms timeout):');
-    window.setTimeout(function() {
-        window.c2.disconnect();
-    }, 1000);
+    console.log('DISCONNECTING main2:');
+    window.c2.disconnect();
 };
