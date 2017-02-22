@@ -21,17 +21,14 @@
     "devtools_page": "html/devtool/devtoolLoader.html",
 
     "background": {
-        "scripts": [
-            "js/background/background.min.js"
-        ]
+        "scripts": ["js/background/background.min.js"],
+        "persistent": false
     },
 
     "content_scripts": [{
         "matches": ["<all_urls>"],
 
-        "js": [
-            "js/content_scripts/content_script.min.js"
-        ],
+        "js": ["js/content_scripts/content_script.min.js"],
 
         "run_at": "document_end",
         "all_frames": true

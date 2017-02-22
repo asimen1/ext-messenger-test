@@ -4,14 +4,14 @@ import Messenger from 'chrome-ext-messenger';
 let messenger = new Messenger();
 window.m = messenger;
 
-let messageHandler = function(message, sender, sendResponse) {
+let messageHandler = function(message, from, sender, sendResponse) {
     console.log('popup got message:', arguments);
     sendResponse('I AM RESPONSE FROM POPUP');
 };
 
 window.c = messenger.initConnection('main', messageHandler);
 
-let messageHandler2 = function(message, sender, sendResponse) {
+let messageHandler2 = function(message, from, sender, sendResponse) {
     console.log('popup 2 got message:', arguments);
     sendResponse('I AM RESPONSE FROM POPUP 2');
 };

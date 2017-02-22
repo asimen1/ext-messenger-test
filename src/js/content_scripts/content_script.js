@@ -13,7 +13,7 @@ try {
 }
 
 
-let messageHandler = function(message, sender, sendResponse) {
+let messageHandler = function(message, from, sender, sendResponse) {
     // Messages that only the top page should handle (not iframes).
     if (isTopPage) {
         console.log('content_script got message:', arguments);
@@ -23,7 +23,7 @@ let messageHandler = function(message, sender, sendResponse) {
 
 window.c = messenger.initConnection('main', messageHandler);
 
-let messageHandler2 = function(message, sender, sendResponse) {
+let messageHandler2 = function(message, from, sender, sendResponse) {
     // Messages that only the top page should handle (not iframes).
     if (isTopPage) {
         console.log('content_script 2 got message:', arguments);

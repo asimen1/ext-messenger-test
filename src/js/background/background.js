@@ -10,6 +10,10 @@ chrome.tabs.onCreated.addListener(function(tab) {
     latestTabId = tab.id;
 });
 
+chrome.runtime.onConnect.addListener(function(port) {
+    console.log('chrome.runtime.onConnect - is messenger port?', Messenger.isMessengerPort(port));
+});
+
 let connectedHandler  = function(extensionPart, port, tabId) {
 	console.log('--- CONNECTED PORT: ---', arguments);
 };
@@ -25,14 +29,14 @@ let initBackgroundHub = function() {
 //window.setTimeout(initBackgroundHub, 10000);
 initBackgroundHub();
 
-let messageHandler = function(message, sender, sendResponse) {
+let messageHandler = function(message, from, sender, sendResponse) {
     console.log('background got message:', arguments);
     sendResponse('I AM RESPONSE FROM BACKGROUND');
 };
 
 window.c = messenger.initConnection('main', messageHandler);
 
-let messageHandler2 = function(message, sender, sendResponse) {
+let messageHandler2 = function(message, from, sender, sendResponse) {
     console.log('background 2 got message:', arguments);
     sendResponse('I AM RESPONSE FROM BACKGROUND 2');
 };
@@ -41,6 +45,10 @@ window.c2 = messenger.initConnection('main2', messageHandler2);
 
 window.runTests = function(tabId) {
     tabId = tabId || latestTabId;
+
+    if (!tabId) {
+        return 'not tab id yet, please open a tab';
+    }
 
     console.log('BACKGROUND TO BACKGROUND:');
     console.log('--- main to main2 --- ');

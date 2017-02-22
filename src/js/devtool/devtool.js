@@ -4,14 +4,14 @@ import Messenger from 'chrome-ext-messenger';
 let messenger = new Messenger();
 window.m = messenger;
 
-let messageHandler = function(message, sender, sendResponse) {
+let messageHandler = function(message, from, sender, sendResponse) {
     console.log('devtool got message:', arguments);
     sendResponse('I AM RESPONSE FROM DEVTOOL');
 };
 
 window.c = messenger.initConnection('main', messageHandler);
 
-let messageHandler2 = function(message, sender, sendResponse) {
+let messageHandler2 = function(message, from, sender, sendResponse) {
     console.log('devtool 2 got message:', arguments);
     sendResponse('I AM RESPONSE FROM DEVTOOL 2');
 };
