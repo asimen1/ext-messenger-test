@@ -1,6 +1,7 @@
 console.log('BACKGROUND');
 
 import Messenger from 'chrome-ext-messenger';
+//let Messenger = window['chrome-ext-messenger'];
 let messenger = new Messenger();
 window.m = messenger;
 
