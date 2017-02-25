@@ -21,7 +21,7 @@
     "devtools_page": "html/devtool/devtoolLoader.html",
 
     "background": {
-        "scripts": ["js/background/background.min.js"],
+        "scripts": ["chrome-ext-messenger.min.js", "js/background/background.min.js"],
         "persistent": false
     },
 
