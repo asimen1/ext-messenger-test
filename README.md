@@ -1,6 +1,6 @@
 # chrome-ext-messenger-test
 
-Multipart (background, content script, popup and devtool) extension for testing [chrome-ext-messenger](https://github.com/asimen1/chrome-ext-messenger-dev).
+Multipart (background, content script, popup and devtool) extension for testing [chrome-ext-messenger](https://github.com/asimen1/chrome-ext-messenger).
 
     // install webpack
     npm install webpack -g
