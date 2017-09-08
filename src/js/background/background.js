@@ -51,69 +51,121 @@ window.runTests = function(tabId) {
         return 'not tab id yet, please open a tab';
     }
 
+    // ----------------------------------------------------
     console.log('BACKGROUND TO BACKGROUND:');
+    // ----------------------------------------------------
+
     console.log('--- main to main2 --- ');
-    window.c.sendMessage('background:main2', 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('background:main2', 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main --- ');
-    window.c.sendMessage('background:main', 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('background:main', 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main2 to main --- ');
-    window.c2.sendMessage('background:main2', 'some message', function(res) { console.log('got response:', res); });
+    window.c2.sendMessage('background:main2', 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main,main2 --- ');
-    window.c.sendMessage('background:main,main2', 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('background:main,main2', 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to * --- ');
-    window.c.sendMessage('background:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('background:*:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
+    // ----------------------------------------------------
     console.log('BACKGROUND TO CONTENT SCRIPT:');
+    // ----------------------------------------------------
+
     console.log('--- main to main2 --- ');
-    window.c.sendMessage('content_script:main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('content_script:main2:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main --- ');
-    window.c.sendMessage('content_script:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('content_script:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main2 to main --- ');
-    window.c2.sendMessage('content_script:main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c2.sendMessage('content_script:main2:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main,main2 --- ');
-    window.c.sendMessage('content_script:main,main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('content_script:main,main2:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to * --- ');
-    window.c.sendMessage('content_script:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('content_script:*:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
+    // ----------------------------------------------------
     console.log('BACKGROUND TO POPUP:');
-    console.log('--- main to main --- ');
-    window.c.sendMessage('popup:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    // ----------------------------------------------------
 
     console.log('--- main to main --- ');
-    window.c.sendMessage('popup:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('popup:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
+
+    console.log('--- main to main --- ');
+    window.c.sendMessage('popup:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main2 to main --- ');
-    window.c2.sendMessage('popup:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c2.sendMessage('popup:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main,main2 --- ');
-    window.c.sendMessage('popup:main,main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('popup:main,main2:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to * --- ');
-    window.c.sendMessage('popup:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('popup:*:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
+    // ----------------------------------------------------        
     console.log('BACKGROUND TO DEVTOOL:');
-    console.log('--- main to main --- ');
-    window.c.sendMessage('devtool:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    // ----------------------------------------------------
 
     console.log('--- main to main --- ');
-    window.c.sendMessage('devtool:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('devtool:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
+
+    console.log('--- main to main --- ');
+    window.c.sendMessage('devtool:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main2 to main --- ');
-    window.c2.sendMessage('devtool:main:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c2.sendMessage('devtool:main:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to main,main2 --- ');
-    window.c.sendMessage('devtool:main,main2:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('devtool:main,main2:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('--- main to * --- ');
-    window.c.sendMessage('devtool:*:' + tabId, 'some message', function(res) { console.log('got response:', res); });
+    window.c.sendMessage('devtool:*:' + tabId, 'some message').then((res) => {
+        console.log('got response:', res);
+    });
 
     console.log('DISCONNECTING main2 (after 1000ms timeout):');
     window.setTimeout(function() {

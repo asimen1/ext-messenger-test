@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
