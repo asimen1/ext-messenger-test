@@ -1,6 +1,8 @@
 console.log('BACKGROUND');
 
 import Messenger from 'chrome-ext-messenger';
+window.mClass = Messenger;
+
 //let Messenger = window['chrome-ext-messenger'];
 let messenger = new Messenger();
 window.m = messenger;
@@ -167,8 +169,15 @@ window.runTests = function(tabId) {
         console.log('got response:', res);
     });
 
-    console.log('DISCONNECTING main2 (after 1000ms timeout):');
+    console.log('DISCONNECTING main2 (after 2000ms timeout):');
     window.setTimeout(function() {
         window.c2.disconnect();
-    }, 1000);
+
+        console.log('--- main2 to main (after disconnect) --- ');
+        window.c2.sendMessage('background:main2', 'some message').then((res) => {
+            console.log('got response:', res);
+        }).catch((err) => {
+            console.log('catch error', err);
+        });
+    }, 2000);
 };

@@ -135,8 +135,13 @@ window.runTests = function() {
         console.log('got response:', res);
     });
 
-    console.log('DISCONNECTING main2 (after 1000ms timeout):');
+    console.log('DISCONNECTING main2 (after 2000ms timeout):');
     window.setTimeout(function() {
         window.c2.disconnect();
-    }, 1000); 
+    }, 2000); 
 };
+
+var runTestsBtn = document.getElementById('runTests');
+runTestsBtn.addEventListener('click', function() {
+    window.runTests();
+});
