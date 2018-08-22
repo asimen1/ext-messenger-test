@@ -1,6 +1,6 @@
 console.log('CONTENT_SCRIPT');
 
-import Messenger from 'chrome-ext-messenger';
+import Messenger from 'ext-messenger';
 let messenger = new Messenger();
 window.m = messenger;
 

@@ -1,6 +1,6 @@
 {
-  "name": "chrome-ext-messenger-test",
-  "version": "2.0.0",
+  "name": "ext-messenger-test",
+  "version": "3.0.0",
   "description": "TEST TEST",
   "directories": {
     "test": "tests"
@@ -9,12 +9,10 @@
     "LICENSE.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch --progress",
-    "package": ""
+    "dev": "./node_modules/.bin/webpack --watch --progress"
   },
   "dependencies": {
-    "chrome-ext-messenger": "*"
+    "ext-messenger": "*"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",

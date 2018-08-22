@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
 
-    "name": "chrome-ext-messenger-test",
+    "name": "ext-messenger-test",
     "description": "TEST TEST",
     "version": "1.0.0",
 
