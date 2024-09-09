@@ -1,11 +1,11 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
 
     "name": "ext-messenger-test",
-    "description": "TEST TEST",
-    "version": "1.0.0",
+    "description": "test ext-messenger",
+    "version": "3.0.0",
 
-    "minimum_chrome_version": "30.0",
+    "minimum_chrome_version": "88.0",
 
     "icons": {
         "16": "icons/icon16.png",
@@ -13,31 +13,33 @@
         "128": "icons/icon128.png"
     },
 
-    "browser_action": {
-        "default_icon": "icons/icon16.png",
-        "default_popup": "html/popup/popup.html"
-    },
-
-    "devtools_page": "html/devtool/devtoolLoader.html",
-
     "background": {
-        "scripts": ["js/background/background.min.js"],
-        "persistent": false
+        "service_worker": "background/service_worker.min.js",
+        "type": "module"
     },
 
     "content_scripts": [{
         "matches": ["<all_urls>"],
-
-        "js": ["js/content_scripts/content_script.min.js"],
-
+        "js": ["content_scripts/content_script.min.js"],
         "run_at": "document_end",
         "all_frames": true
     }],
 
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "action": {
+        "default_popup": "popup/html/popup.html",
+        "default_icon": {
+          "16": "icons/icon16.png",
+          "48": "icons/icon48.png",
+          "128": "icons/icon128.png"
+        }
+    },
+
+    "devtools_page": "devtool/html/devtoolLoader.html",
 
     "permissions": [
-        "<all_urls>",
         "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
     ]
 }
